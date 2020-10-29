@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="cn.gson.crm.model.mapper.WenjuanMapper">
+        <resultMap id="wenjuanResultMap" type="cn.gson.crm.model.domain.Wenjuanbiao">
+        <id column="note_id" property="noteid"></id>
+        <result column="title" property="title"></result>
+        <result column="shuoming" property="desc"></result>
+        <result column="start_time" property="starttime"></result>
+        <result column="end_time" property="endtime"></result>
+        <result column="state" property="state"></result>
+        <result column="anon" property="anon"></result>
+        <result column="creator" property="creator"></result>
+        <result column="create_time" property="createtime"></result>
+        </resultMap>
+        <insert id="insertnote" useGeneratedKeys="true" keyProperty="noteid" parameterType="cn.gson.crm.model.domain.Wenjuanbiao">
+        insert into t_note(title,shuoming,start_time,end_time,state,anon,creator,create_time) 
+        values(#{title},#{desc},#{starttime},#{endtime},#{state},#{anon},#{creator},#{createtime})
+        </insert>
+        <insert id="insertquestion" useGeneratedKeys="true" keyProperty="reqid" parameterType="cn.gson.crm.model.domain.Questionb">
+        insert into t_question(title,required,type,note_id) values(#{title},#{required},#{type},#{noteid})
+        </insert>
+        <insert id="insertoption" parameterType="cn.gson.crm.model.domain.Optionb">
+        insert into t_option(new_name,new_con,que_id) values(#{newname},#{newcon},#{quesid})
+        </insert>
+        </mapper>
+       

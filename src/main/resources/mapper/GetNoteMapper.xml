@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.crm.model.mapper.GetNoteMapper">
+
+	<select id="getOtherNote" parameterType="string" resultType="cn.gson.crm.entity.Note">
+		select * from t_note where
+		<choose>
+        <when test="_parameter !=null and _parameter != ''">
+           state=#{state}
+        </when>
+        <otherwise>
+           state != 0
+        </otherwise>
+    </choose>
+	</select>
+
+	<select id="getQue" parameterType="Long" resultType="cn.gson.crm.entity.Question">
+		select
+		a.title,b.optt from t_question a left join (SELECT
+		que_id,GROUP_CONCAT(new_name,":",new_con)AS optt FROM t_option GROUP
+		BY que_id) b on a.req_id = b.que_id WHERE note_id=#{id} GROUP BY
+		req_id
+	</select>
+	
+	<select id="getNote"  resultType="cn.gson.crm.entity.Note">
+		select * from t_note
+	</select>
+	
+	<select id="getNoteDetails" resultType="cn.gson.crm.model.domain.NoteCount">
+        select  title,COUNT(voter) from t_question,t_answer WHERE t_question.req_id = t_answer.que_id GROUP BY title;
+    </select>
+
+	<update id="noteUpdatePass" parameterType="int">
+		UPDATE t_note
+		SET
+		state="1"
+		WHERE note_id=#{id};
+	</update>
+	<update id="noteUpdateNotPass" parameterType="int">
+		UPDATE t_note
+		SET
+		state="2"
+		WHERE note_id=#{id};
+	</update>
+</mapper>
