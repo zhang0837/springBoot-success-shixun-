@@ -86,6 +86,7 @@ public class NoteListController {
 		return new AjaxResult();
 	}
 
+	//
 	@RequestMapping("/noteUpdateNotPass")
 	@ResponseBody
 	public AjaxResult noteUpdateNotPass(int id) {
