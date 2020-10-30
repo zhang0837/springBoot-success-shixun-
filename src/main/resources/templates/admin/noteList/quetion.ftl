@@ -9,13 +9,13 @@
 <title>问卷审核列表页面FreeMarker</title>
 
 
-<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript"></script>
 
 </head>
 
 <body>
 
-    <form class="app-form" id="quetion-form">
+    <form class="app-form">
 
         <table style="border-collapse:separate; border-spacing:0px 20px;">
 

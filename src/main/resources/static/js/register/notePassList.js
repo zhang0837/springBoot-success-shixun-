@@ -98,7 +98,7 @@ define(function() {
 								},
 								onLoad : function() {
 									// 窗口表单加载成功时执行
-									form = $("#quetion-form");
+									form = $("#passQuetion-form");
 								},
 								buttons : [
 										{

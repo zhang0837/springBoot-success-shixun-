@@ -54,7 +54,7 @@ public class NotePassListController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/getPassQue")
+	@RequestMapping("/quetion")
 	public List<Question> getPassQue(Long id) {
 		List<Question> QueList = getPassNoteService.getPassQue(id);
 		return QueList;
